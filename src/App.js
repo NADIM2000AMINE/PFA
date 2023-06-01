@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as Components from './Components/Auth_Components';
 import ForgotPasswordPage from "./Components/ForgotPasswordPage";
+
 
 function App() {
   const [signIn, toggle] = React.useState(true);
@@ -14,12 +15,38 @@ function App() {
     setShowForgotPassword(false);
   };
 
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+  const initialEmail = "";
+  const initialPassword = "";
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  useEffect(() => {
+    setEmail(initialEmail);
+    setPassword(initialPassword);
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic
+  };
+  
+
   return (
     <Components.Container>
       <Components.SignUpContainer signinIn={signIn}>
         <Components.Form>
           <Components.Title>Create Account</Components.Title>
-          <Components.Input type='text' placeholder='Name' />
+          <Components.Input type='text'  placeholder='Name' />
           <Components.Input type='email' placeholder='Email' />
           <Components.Input type='password' placeholder='Password' />
           <Components.Button>Sign Up</Components.Button>
@@ -28,11 +55,11 @@ function App() {
 
       <Components.SignInContainer signinIn={signIn}>
         {!showForgotPassword ? (
-          <Components.Form>
+          <Components.Form onSubmit={handleSubmit}>
             <Components.Title>Sign in</Components.Title>
-            <Components.Input type='email' placeholder='Email' />
-            <Components.Input type='password' placeholder='Password' />
-            <Components.Anchor onClick={handleForgotPasswordClick}>
+            <Components.Input type='email' value={email} onChange={handleEmailChange} placeholder='Email' />
+            <Components.Input type='password' value={password} onChange={handlePasswordChange} placeholder='Password' />
+            <Components.Anchor href="#" onClick={handleForgotPasswordClick}>
               Forgot your password?
             </Components.Anchor>
             <Components.Button>Sigin In</Components.Button>
