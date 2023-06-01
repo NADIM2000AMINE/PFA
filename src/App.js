@@ -36,8 +36,8 @@ function App() {
                     <Components.Input type='email' placeholder='Email' />
                     <Components.Input type='password' placeholder='Password' />
                     <Components.Anchor onClick={handleForgotPasswordClick}>
-            Forgot your password?
-          </Components.Anchor>
+                      Forgot your password?
+                    </Components.Anchor>
                     <Components.Button>Sigin In</Components.Button>
                 </Components.Form>
                 ) : (

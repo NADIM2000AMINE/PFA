@@ -17,8 +17,8 @@ function ForgotPasswordPage() {
   };
 
   return (
-    <Components.Container>
-      <Components.Form onSubmit={handleFormSubmit}>
+    <Components.Container style={{ position: "relative", overflow: "hidden", height: "100%" }}>
+      <Components.Form onSubmit={handleFormSubmit} style={{ textAlign: 'center' }}> 
         <Components.Title>Forgot Password</Components.Title>
         <Components.Input
           type="email"
@@ -31,6 +31,7 @@ function ForgotPasswordPage() {
       </Components.Form>
     </Components.Container>
   );
+  
 }
 
 export default ForgotPasswordPage;
